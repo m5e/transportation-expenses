@@ -1,35 +1,80 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
-      <h1 class="title">
-        transportation-expenses
-      </h1>
-      <h2 class="subtitle">
-        A Nuxt.js Github.io site
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+      <app-logo />
+      <nav class="navbar" role="navigation">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <img
+                src="https://bulma.io/images/bulma-logo.png"
+                width="112"
+                height="28"
+              />
+            </a>
+            <a
+              role="button"
+              class="navbar-burger"
+              :class="{ 'is-active': isShowSideMenu }"
+              aria-label="menu"
+              aria-expanded="false"
+              @click="showSideMenu"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="control" :style="{ margin: '1% 0% 0% 1%' }">
+            <div class="tags has-addons">
+              <span class="tag is-dark">作成中</span>
+              <span class="tag is-info">0.0.1</span>
+            </div>
+          </div>
+
+          <div class="navbar-menu" :class="{ 'is-active': isShowSideMenu }">
+            <div class="navbar-start">
+              <a
+                class="navbar-item"
+                :class="{ 'is-active': selected === 'Home' }"
+              >
+                <span @click="switchPage">Home</span>
+              </a>
+              <a
+                class="navbar-item"
+                :class="{ 'is-active': selected === 'Request' }"
+              >
+                <span @click="switchPage">Request</span>
+              </a>
+              <a
+                v-if="authority === 'Authorizer'"
+                class="navbar-item"
+                :class="{ 'is-active': selected === 'Approval' }"
+              >
+                <span @click="switchPage">Approval</span>
+              </a>
+              <a
+                class="navbar-item"
+                :class="{ 'is-active': selected === 'List' }"
+              >
+                <span @click="switchPage">List</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import AppLogo from "~/components/AppLogo.vue";
 
 export default {
   components: {
     AppLogo
   }
-}
+};
 </script>
 
 <style>
@@ -42,7 +87,8 @@ export default {
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
   display: block;
   font-weight: 300;
   font-size: 100px;
@@ -62,4 +108,3 @@ export default {
   padding-top: 15px;
 }
 </style>
-
