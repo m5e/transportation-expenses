@@ -2,8 +2,6 @@
 
 > Simple application using Nuxt.js × BULMA
 
-https://m5e.github.io/transportation-expenses/
-
 ## Build Setup
 
 ``` bash
