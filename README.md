@@ -1,6 +1,6 @@
 # transportation-expenses
 
-> Nuxt.js × BULMA
+> Simple application using Nuxt.js × BULMA
 
 https://m5e.github.io/transportation-expenses/
 
