@@ -52,6 +52,7 @@ module.exports = {
     /*
      ** Run ESLint on save
      */
+    publicPath: "/static/",
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -67,6 +68,7 @@ module.exports = {
    ** nuxt generate の結果を docs フォルダ配下に出力
    */
   generate: {
+    publicPath: "/static/",
     dir: "docs"
   }
 };
