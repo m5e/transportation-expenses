@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div>
-      <app-logo />
       <nav class="navbar" role="navigation">
         <div class="container">
           <div class="navbar-brand">
@@ -47,7 +46,6 @@
                 <span @click="switchPage">Request</span>
               </a>
               <a
-                v-if="authority === 'Authorizer'"
                 class="navbar-item"
                 :class="{ 'is-active': selected === 'Approval' }"
               >
@@ -63,6 +61,7 @@
           </div>
         </div>
       </nav>
+      <app-logo />
     </div>
   </section>
 </template>
@@ -73,6 +72,23 @@ import AppLogo from "~/components/AppLogo.vue";
 export default {
   components: {
     AppLogo
+  },
+  data() {
+    return {
+      selected: "Home",
+      isShowSideMenu: false,
+      resultData: []
+    };
+  },
+  mounted() {},
+  methods: {
+    switchPage(event) {
+      this.selected = event.target.innerText;
+    },
+
+    showSideMenu() {
+      this.isShowSideMenu = !this.isShowSideMenu;
+    }
   }
 };
 </script>
