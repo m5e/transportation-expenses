@@ -32,7 +32,7 @@ module.exports = {
     ]
   },
 
-  routerBase,
+  router: routerBase.router,
 
   /*
    ** Customize the progress bar color
