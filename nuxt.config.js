@@ -27,7 +27,7 @@ module.exports = {
       {
         rel: "icon",
         type: "image/x-icon",
-        href: "/transportation-expenses/favicon.ico"
+        href: "/favicon.ico"
       }
     ]
   },
