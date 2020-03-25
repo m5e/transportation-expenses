@@ -82,7 +82,7 @@ export default {
   },
   mounted() {},
   methods: {
-    switchPage(event) {
+    switchPage() {
       this.selected = event.target.innerText;
     },
 

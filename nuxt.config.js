@@ -1,3 +1,4 @@
+// `DEPLOY_ENV` が `GH_PAGES` の場合のみ `router.base = '/<repository-name>/'` を追加
 const routerBase =
   process.env.DEPLOY_ENV === "GH_PAGES"
     ? {
@@ -22,7 +23,13 @@ module.exports = {
         content: "A Nuxt.js Github.io site"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "/transportation-expenses/favicon.ico"
+      }
+    ]
   },
 
   routerBase,
