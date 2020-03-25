@@ -4,8 +4,7 @@ const routerBase =
     ? {
         router: {
           base: "/transportation-expenses/"
-        },
-        mode: "spa"
+        }
       }
     : {};
 
