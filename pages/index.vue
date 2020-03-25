@@ -126,7 +126,7 @@ div.control {
 
 @media screen and (min-width: 1024px) {
   div.control {
-    margin: 4% 1% 0% -1%;
+    margin: 3% 1% 0% -1%;
   }
 }
 </style>
