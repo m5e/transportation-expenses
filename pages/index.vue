@@ -24,7 +24,7 @@
               <span aria-hidden="true"></span>
             </a>
           </div>
-          <div class="control" :style="{ margin: '1% 0% 0% 1%' }">
+          <div class="control">
             <div class="tags has-addons">
               <span class="tag is-dark">作成中</span>
               <span class="tag is-info">0.0.1</span>
@@ -47,12 +47,6 @@
               </a>
               <a
                 class="navbar-item"
-                :class="{ 'is-active': selected === 'Approval' }"
-              >
-                <span @click="switchPage">Approval</span>
-              </a>
-              <a
-                class="navbar-item"
                 :class="{ 'is-active': selected === 'List' }"
               >
                 <span @click="switchPage">List</span>
@@ -61,21 +55,23 @@
           </div>
         </div>
       </nav>
-      <app-logo />
+      <Home v-if="selected === 'Home'"></Home>
+      <Request v-else-if="selected === 'Request'"></Request>
+      <List v-else-if="selected === 'List'"></List>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from "../components/AppLogo.vue";
+import Home from "./Home.vue";
+import Request from "./Request.vue";
+import List from "./List.vue";
 
 export default {
-  components: {
-    AppLogo
-  },
+  components: { Home, Request, List },
   data() {
     return {
-      selected: "Home",
+      selected: "List",
       isShowSideMenu: false,
       resultData: []
     };
@@ -122,5 +118,15 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+div.control {
+  margin: 1% 0% 0% 1%;
+}
+
+@media screen and (min-width: 1024px) {
+  div.control {
+    margin: 4% 1% 0% -1%;
+  }
 }
 </style>
