@@ -5,6 +5,7 @@
         <div class="container hero-container">
           <h5 class="subtitle">
             Transportation Expenses Application
+            <AppLogo />
           </h5>
         </div>
       </div>
@@ -13,8 +14,10 @@
 </template>
 
 <script>
+import AppLogo from "../components/AppLogo.vue";
+
 export default {
-  components: {},
+  components: { AppLogo },
   data() {
     return {};
   },
