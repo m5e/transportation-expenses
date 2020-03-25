@@ -29,7 +29,8 @@ module.exports = {
         type: "image/x-icon",
         href: "/transportation-expenses/favicon.ico"
       }
-    ]
+    ],
+    script: [{ src: "**/static/**.js" }]
   },
 
   routerBase,
