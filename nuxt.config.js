@@ -63,6 +63,9 @@ module.exports = {
       }
     }
   },
+  /*
+   ** nuxt generate の結果を docs フォルダ配下に出力
+   */
   generate: {
     dir: "docs"
   }
