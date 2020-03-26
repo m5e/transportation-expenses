@@ -123,7 +123,7 @@
           </section>
           <footer class="modal-card-foot">
             <button class="button" @click="switchDisplayModal">戻る</button>
-            <button class="button is-primary" @click="onClickRequestButton">
+            <button class="button is-primary" @click="onClickApplyButton">
               決定
             </button>
           </footer>
@@ -155,14 +155,17 @@ export default {
   },
   mounted() {},
   methods: {
+    /** Switching the modal display state */
     switchDisplayModal() {
       this.isModalActive = !this.isModalActive;
     },
+
+    /** Switching the display of relay point items */
     refreshhDisplayRelayPoint() {
-      console.log("refreshhDisplayRelayPoint");
       this.isDisplayRelayPoint = !this.isDisplayRelayPoint;
     },
-    onClickRequestButton() {
+
+    onClickApplyButton() {
       this.isModalActive = false;
 
       if (
@@ -173,9 +176,11 @@ export default {
         this.goalPoint === "" ||
         this.price <= 0
       ) {
-        alert("未入力項目があります");
+        this.$toast.error("未入力の項目があります").goAway(1300);
         return;
       }
+
+      this.$toast.success("申請が完了しました").goAway(2000);
     }
   }
 };

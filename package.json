@@ -17,6 +17,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/bulma": "^1.2.7",
+    "@nuxtjs/toast": "^3.3.0",
     "animate.css": "^3.7.2",
     "axios": "^0.19.2",
     "nuxt": "^2.0.0",
