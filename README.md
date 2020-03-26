@@ -6,7 +6,6 @@
   * v10.15.3
 * framework
   * Nuxt.js
-    * Framework based on Vue.js
 * css framework
   * bulma
 
