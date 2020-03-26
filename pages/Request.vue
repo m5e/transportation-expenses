@@ -186,6 +186,8 @@ select {
 }
 .request-container {
   width: 90%;
+  margin-right: auto;
+  margin-left: auto;
 }
 .switch-Display-RelayPoint-Button {
   margin-top: 10%;
