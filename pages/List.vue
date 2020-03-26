@@ -96,6 +96,6 @@ export default {
 
 <style scoped>
 table {
-  margin: -130% 0% 0% 0%;
+  margin: -90% 0% 0% 0%;
 }
 </style>

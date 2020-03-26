@@ -71,7 +71,7 @@ export default {
   components: { Home, Request, List },
   data() {
     return {
-      selected: "Home",
+      selected: "Request",
       isShowSideMenu: false,
       resultData: []
     };
@@ -90,6 +90,9 @@ export default {
 </script>
 
 <style>
+label {
+  margin-top: 15%;
+}
 .container {
   min-height: 100vh;
   display: flex;
@@ -97,7 +100,6 @@ export default {
   align-items: center;
   text-align: center;
 }
-
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
@@ -107,7 +109,6 @@ export default {
   color: #35495e;
   letter-spacing: 1px;
 }
-
 .subtitle {
   font-weight: 300;
   font-size: 42px;
@@ -115,15 +116,12 @@ export default {
   word-spacing: 5px;
   padding-bottom: 15px;
 }
-
 .links {
   padding-top: 15px;
 }
-
 div.control {
   margin: 1% 0% 0% 1%;
 }
-
 @media screen and (min-width: 1024px) {
   div.control {
     margin: 3% 1% 0% -1%;

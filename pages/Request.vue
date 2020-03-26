@@ -1,6 +1,96 @@
 <template>
   <section class="container">
-    <div>request</div>
+    <div>
+      <label class="label">
+        日付
+      </label>
+      <input
+        type="date"
+        class="input"
+        :class="{ 'is-danger': requestDate === '' }"
+        v-model="requestDate"
+      />
+      <label class="label">
+        業務内容・行先
+      </label>
+      <div style="width: 90%;">
+        <textarea
+          class="textarea"
+          :class="{ 'is-danger': content === '' }"
+          v-model="content"
+        />
+        <label class="label">乗り物</label>
+        <select class="select" v-model="vehicle">
+          <option>電車</option>
+          <option>バス</option>
+          <option>タクシー</option>
+          <option>新幹線</option>
+        </select>
+        <label class="label">
+          発～ ( 経由 ) ～着
+        </label>
+        <div style="width: 90%;">
+          <textarea
+            class="textarea"
+            :class="{ 'is-danger': route === '' }"
+            v-model="route"
+          />
+          <label class="label">請求先</label>
+          <select class="select" v-model="request">
+            <option>客先</option>
+            <option>自社</option>
+          </select>
+          <label class="label">
+            金額
+          </label>
+          <input
+            type="number"
+            class="input"
+            :class="{ 'is-danger': (price <= 0) | (price === '') }"
+            v-model="price"
+          />
+          <div class="field is-grouped">
+            <p class="control">
+              <a
+                class="button is-primary request-button"
+                @click="switchDisplayModal"
+                >申請</a
+              >
+            </p>
+          </div>
+
+          <div class="modal" :class="{ 'is-active': isModalActive }">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title">申請確認</p>
+                <button
+                  class="delete"
+                  aria-label="close"
+                  @click="switchDisplayModal"
+                ></button>
+              </header>
+              <section class="modal-card-body">
+                下記内容で申請してもよろしいでしょうか？
+                <li>日付：{{ requestDate }}</li>
+                <li>業務内容・行先：{{ content }}</li>
+                <li>乗り物：{{ vehicle }}</li>
+                <li>経路：{{ route }}</li>
+                <li>請求先：{{ request }}</li>
+                <li>片道・往復：{{ ways }}</li>
+                <li>金額：{{ price }} 円</li>
+              </section>
+              <footer class="modal-card-foot">
+                <button class="button" @click="switchDisplayModal">戻る</button>
+                <button class="button is-primary" @click="onClickRequestButton">
+                  決定
+                </button>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -8,11 +98,58 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      selected: "交通費申請",
+      menuLists: ["交通費申請", "申請一覧"],
+      isModalActive: false,
+      requestDate: "",
+      vehicle: "電車",
+      route: "",
+      request: "自社",
+      ways: "往復",
+      price: 0,
+      content: ""
+    };
   },
   mounted() {},
-  methods: {}
+  methods: {
+    switchDisplayModal() {
+      this.isModalActive = !this.isModalActive;
+    },
+    onClickRequestButton() {
+      this.isModalActive = false;
+
+      if (
+        this.content === "" ||
+        this.requestDate === "" ||
+        this.route === "" ||
+        this.price > 0
+      ) {
+        alert("未入力項目があります");
+        return;
+      }
+    }
+  }
 };
 </script>
 
-<style></style>
+<style scoped>
+.request-button {
+  margin: 55% 0% 25% 0%;
+  width: 200%;
+}
+/** mobile */
+@media screen and (max-width: 1024px) {
+  .modal-card {
+    width: 80%;
+    margin: 0% 10% 10% 0%;
+  }
+}
+/** PC */
+@media screen and (min-width: 1025px) {
+  .modal-card {
+    width: 80%;
+    margin: 0% 10% 10% 10%;
+  }
+}
+</style>
