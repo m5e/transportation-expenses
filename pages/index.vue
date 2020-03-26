@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <div>
+    <div :style="{ width: '90%' }">
       <nav class="navbar" role="navigation">
         <div class="container">
           <div class="navbar-brand">
@@ -71,7 +71,7 @@ export default {
   components: { Home, Request, List },
   data() {
     return {
-      selected: "Home",
+      selected: "Request",
       isShowSideMenu: false,
       resultData: []
     };
