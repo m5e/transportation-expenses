@@ -12,7 +12,9 @@
             <td>{{ list.date }}</td>
             <td>{{ list.status }}</td>
             <td>
-              <button class="button" @click="showDetail(list.id)">詳細</button>
+              <button class="button detail-button" @click="showDetail(list.id)">
+                詳細
+              </button>
             </td>
           </tr>
         </tbody>
@@ -120,5 +122,8 @@ export default {
 table {
   text-align-last: center;
   margin: 15% 0% 0% 0%;
+}
+.detail-button {
+  width: 60%;
 }
 </style>

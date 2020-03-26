@@ -40,6 +40,13 @@
       <span v-if="startPoint === ''" :style="{ color: 'red' }"
         >出発地点を入力して下さい</span
       >
+      <div :style="{ marginTop: '10%' }">
+        <button class="button is-primary" @click="refreshhDisplayRelayPoint">
+          {{
+            !isDisplayRelayPoint ? "中継地点を追加する" : "中継地点を削除する"
+          }}
+        </button>
+      </div>
       <div v-if="isDisplayRelayPoint">
         <label class="label">
           中継地点
@@ -53,12 +60,6 @@
           >中継地点を入力して下さい</span
         >
       </div>
-      <button
-        class="button switch-Display-RelayPoint-Button"
-        @click="switchDisplayRelayPoint"
-      >
-        {{ !isDisplayRelayPoint ? "中継地点を追加する" : "中継地点を削除する" }}
-      </button>
       <label class="label">
         到着地点
       </label>
@@ -157,8 +158,8 @@ export default {
     switchDisplayModal() {
       this.isModalActive = !this.isModalActive;
     },
-    switchDisplayRelayPoint() {
-      console.log("switchDisplayRelayPoint");
+    refreshhDisplayRelayPoint() {
+      console.log("refreshhDisplayRelayPoint");
       this.isDisplayRelayPoint = !this.isDisplayRelayPoint;
     },
     onClickRequestButton() {
@@ -188,9 +189,6 @@ select {
   width: 90%;
   margin-right: auto;
   margin-left: auto;
-}
-.switch-Display-RelayPoint-Button {
-  margin-top: 10%;
 }
 .request-button {
   margin: 55% 0% 25% 0%;

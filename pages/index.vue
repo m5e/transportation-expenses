@@ -23,11 +23,11 @@
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
-          </div>
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-dark">作成中</span>
-              <span class="tag is-info">0.0.1</span>
+            <div class="control">
+              <div class="tags has-addons">
+                <span class="tag is-dark">作成中</span>
+                <span class="tag is-info">1.0.0</span>
+              </div>
             </div>
           </div>
 
@@ -115,11 +115,14 @@ label {
   padding-top: 15px;
 }
 div.control {
-  margin: 1% 0% 0% 1%;
+  margin-left: 1%;
+  margin-right: 3%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 @media screen and (min-width: 1024px) {
   div.control {
-    margin: 3% 1% 0% -1%;
+    margin: auto;
   }
 }
 </style>
