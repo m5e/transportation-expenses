@@ -2,6 +2,13 @@
 
 > Simple application using Nuxt.js × BULMA
 
+* node version
+  * v10.15.3
+* framework
+  * Nuxt.js
+* css framework
+  * bulma
+
 ## Build Setup
 
 ``` bash
