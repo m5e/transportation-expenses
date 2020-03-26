@@ -71,7 +71,7 @@ export default {
   components: { Home, Request, List },
   data() {
     return {
-      selected: "Request",
+      selected: "Home",
       isShowSideMenu: false,
       resultData: []
     };
