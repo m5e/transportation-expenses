@@ -1,7 +1,9 @@
 <template>
   <section class="container">
     <div>
-      <table class="table is-bordered table is-striped is-narrow is-hoverable">
+      <table
+        class="table is-bordered table is-striped is-narrow is-hoverable is-fullwidth"
+      >
         <tbody>
           <th>申請日時</th>
           <th>ステータス</th>
@@ -72,6 +74,26 @@ export default {
           route: "高田馬場 ~ 品川",
           request: "客先",
           ways: "往復"
+        },
+        {
+          id: 3,
+          date: "2020/4/3",
+          status: "申請中",
+          location: "品川",
+          vehicle: "電車",
+          route: "高田馬場 ~ 品川",
+          request: "客先",
+          ways: "往復"
+        },
+        {
+          id: 4,
+          date: "2020/4/3",
+          status: "申請中",
+          location: "品川",
+          vehicle: "電車",
+          route: "高田馬場 ~ 品川",
+          request: "客先",
+          ways: "往復"
         }
       ],
       requestDetail: [],
@@ -96,6 +118,7 @@ export default {
 
 <style scoped>
 table {
-  margin: -90% 0% 0% 0%;
+  text-align-last: center;
+  margin: 15% 0% 0% 0%;
 }
 </style>

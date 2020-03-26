@@ -40,17 +40,25 @@
       <span v-if="startPoint === ''" :style="{ color: 'red' }"
         >出発地点を入力して下さい</span
       >
-      <label class="label">
-        中継地点
-      </label>
-      <textarea
-        class="textarea"
-        :class="{ 'is-danger': relayPoint === '' }"
-        v-model="relayPoint"
-      />
-      <span v-if="relayPoint === ''" :style="{ color: 'red' }"
-        >中継地点を入力して下さい</span
+      <div v-if="isDisplayRelayPoint">
+        <label class="label">
+          中継地点
+        </label>
+        <textarea
+          class="textarea"
+          :class="{ 'is-danger': relayPoint === '' }"
+          v-model="relayPoint"
+        />
+        <span v-if="relayPoint === ''" :style="{ color: 'red' }"
+          >中継地点を入力して下さい</span
+        >
+      </div>
+      <button
+        class="button switch-Display-RelayPoint-Button"
+        @click="switchDisplayRelayPoint"
       >
+        {{ !isDisplayRelayPoint ? "中継地点を追加する" : "中継地点を削除する" }}
+      </button>
       <label class="label">
         到着地点
       </label>
@@ -140,13 +148,18 @@ export default {
       request: "自社",
       ways: "往復",
       price: 0,
-      content: ""
+      content: "",
+      isDisplayRelayPoint: false
     };
   },
   mounted() {},
   methods: {
     switchDisplayModal() {
       this.isModalActive = !this.isModalActive;
+    },
+    switchDisplayRelayPoint() {
+      console.log("switchDisplayRelayPoint");
+      this.isDisplayRelayPoint = !this.isDisplayRelayPoint;
     },
     onClickRequestButton() {
       this.isModalActive = false;
@@ -155,7 +168,7 @@ export default {
         this.content === "" ||
         this.requestDate === "" ||
         this.startPoint === "" ||
-        this.relayPoint === "" ||
+        (this.isDisplayRelayPoint && this.relayPoint === "") ||
         this.goalPoint === "" ||
         this.price <= 0
       ) {
@@ -168,6 +181,15 @@ export default {
 </script>
 
 <style scoped>
+select {
+  width: 100%;
+}
+.request-container {
+  width: 90%;
+}
+.switch-Display-RelayPoint-Button {
+  margin-top: 10%;
+}
 .request-button {
   margin: 55% 0% 25% 0%;
   width: 200%;

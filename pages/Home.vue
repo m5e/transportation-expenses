@@ -2,7 +2,7 @@
   <section class="container">
     <div class="hero is-primary">
       <div class="hero-body">
-        <div class="container hero-container">
+        <div class="hero-container">
           <h5 class="subtitle">
             Transportation Expenses Application
             <AppLogo />
@@ -26,4 +26,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+h5 {
+  margin: 0% 0% 0% 0%;
+}
+</style>

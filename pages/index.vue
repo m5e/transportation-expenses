@@ -1,6 +1,6 @@
 <template>
-  <section class="container">
-    <div :style="{ width: '90%' }">
+  <section>
+    <div>
       <nav class="navbar" role="navigation">
         <div class="container">
           <div class="navbar-brand">
@@ -71,7 +71,7 @@ export default {
   components: { Home, Request, List },
   data() {
     return {
-      selected: "Request",
+      selected: "Home",
       isShowSideMenu: false,
       resultData: []
     };
@@ -94,11 +94,6 @@ label {
   margin-top: 15%;
 }
 .container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
