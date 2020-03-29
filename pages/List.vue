@@ -10,7 +10,7 @@
           <tr v-for="list in requestLists" :key="list.id">
             <td>{{ list.requestDate }}</td>
             <td>
-              <button class="button detail-button">
+              <button class="button detail-button" @click="showDetail(list.id)">
                 詳細
               </button>
             </td>
@@ -18,7 +18,7 @@
         </tbody>
       </table>
 
-      <!-- <div class="modal" :class="{ 'is-active': isModalActive }">
+      <div class="modal" :class="{ 'is-active': isModalActive }">
         <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">
@@ -32,19 +32,24 @@
           <section class="modal-card-body">
             申請内容は下記のとおりです
             <ul v-for="detail in requestDetail" :key="detail.id">
-              <li>日付：{{ detail.date }}</li>
-              <li>業務内容・行先：{{ detail.location }}</li>
-              <li>乗り物：{{ detail.vehicle }}</li>
-              <li>発～ ( 経由 ) ～着：{{ detail.route }}</li>
-              <li>請求先：{{ detail.request }}</li>
-              <li>片道・往復：{{ detail.ways }}</li>
+              <li>日付 ：{{ detail.requestDate }}</li>
+              <li>業務内容・行先：{{ detail.content }}</li>
+              <li>乗り物 ：{{ detail.vehicle }}</li>
+              <li>出発地点 ：{{ detail.startPoint }}</li>
+              <li v-if="detail.relayPoint !== ''">
+                中継地点 ：{{ detail.relayPoint }}
+              </li>
+              <li>到着地点 ：{{ detail.goalPoint }}</li>
+              <li>請求先 ：{{ detail.request }}</li>
+              <li>片道・往復 ：{{ detail.ways }}</li>
+              <li>合計金額 ：{{ detail.price }}円</li>
             </ul>
           </section>
           <footer class="modal-card-foot">
             <button class="button" @click="switchDisplayModal">戻る</button>
           </footer>
         </div>
-      </div> -->
+      </div>
     </div>
   </section>
 </template>
@@ -55,74 +60,85 @@ export default {
   data() {
     return {
       requestLists: [],
+      requestDetail: [],
       defaultLists: [
         {
           id: 1,
           requestDate: "2020/4/1",
-          status: "課長まで承認済み",
-          location: "五反田",
+          content: "面談",
           vehicle: "電車",
-          route: "横浜 ~ 五反田",
+          startPoint: "横浜",
+          relayPoint: "田端",
+          goalPoint: "五反田",
           request: "自社",
-          ways: "片道"
+          ways: "片道",
+          price: 460
         },
         {
           id: 2,
           requestDate: "2020/4/3",
-          status: "申請中",
-          location: "品川",
+          content: "打ち合わせ",
           vehicle: "電車",
-          route: "高田馬場 ~ 品川",
-          request: "客先",
-          ways: "往復"
+          startPoint: "東京",
+          relayPoint: "",
+          goalPoint: "品川",
+          request: "自社",
+          ways: "片道",
+          price: 200
         },
         {
           id: 3,
-          requestDate: "2020/4/3",
-          status: "申請中",
-          location: "品川",
+          requestDate: "2020/4/5",
+          content: "打ち合わせ",
           vehicle: "電車",
-          route: "高田馬場 ~ 品川",
-          request: "客先",
-          ways: "往復"
+          startPoint: "東京",
+          relayPoint: "",
+          goalPoint: "千葉",
+          request: "自社",
+          ways: "片道",
+          price: 660
         },
         {
           id: 4,
-          requestDate: "2020/4/3",
-          status: "申請中",
-          location: "品川",
+          requestDate: "2020/4/7",
+          content: "会議",
           vehicle: "電車",
-          route: "高田馬場 ~ 品川",
-          request: "客先",
-          ways: "往復"
+          startPoint: "横浜",
+          relayPoint: "",
+          goalPoint: "みなとみらい",
+          request: "自社",
+          ways: "片道",
+          price: 600
         }
       ],
-      requestDetail: [],
       isModalActive: false
     };
   },
   mounted() {
-    this.initialDisplay();
+    this.initialDisplayOfList();
   },
   methods: {
-    initialDisplay() {
-      const data = JSON.parse(sessionStorage.getItem("requestData"));
+    initialDisplayOfList() {
+      const parsedSessionStorageData = JSON.parse(
+        sessionStorage.getItem("requestData")
+      );
       this.requestLists =
-        data && data.length !== null ? data : this.defaultLists;
+        parsedSessionStorageData && parsedSessionStorageData.length !== null
+          ? parsedSessionStorageData
+          : this.defaultLists;
+    },
+
+    showDetail(targetId) {
+      this.isModalActive = true;
+
+      this.requestDetail = this.requestLists.filter(
+        list => list.id === targetId
+      );
+    },
+
+    switchDisplayModal() {
+      this.isModalActive = !this.isModalActive;
     }
-    // showDetail(targetId) {
-    //   const data = sessionStorage.getItem("requestData");
-
-    //   console.log("data", data);
-    //   this.requestLists = data.length > 0 ? data : this.defaultLists;
-
-    //   this.isModalActive = true;
-
-    //   this.requestDetail = requestLists.filter(list => list.id === targetId);
-    // },
-    // switchDisplayModal() {
-    //   this.isModalActive = !this.isModalActive;
-    // }
   }
 };
 </script>
