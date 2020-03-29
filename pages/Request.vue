@@ -150,7 +150,8 @@ export default {
       ways: "往復",
       price: 0,
       content: "",
-      isDisplayRelayPoint: false
+      isDisplayRelayPoint: false,
+      requestData: []
     };
   },
   mounted() {},
@@ -179,6 +180,31 @@ export default {
         this.$toast.error("未入力の項目があります").goAway(1300);
         return;
       }
+
+      const parsedSessionStorageData = JSON.parse(
+        sessionStorage.getItem("requestData")
+      );
+      if (
+        parsedSessionStorageData &&
+        parsedSessionStorageData.length !== null
+      ) {
+        this.requestData = parsedSessionStorageData;
+      }
+
+      this.requestData.push({
+        id: Math.random(),
+        requestDate: this.requestDate,
+        vehicle: this.vehicle,
+        startPoint: this.startPoint,
+        relayPoint: this.relayPoint,
+        goalPoint: this.goalPoint,
+        request: this.request,
+        ways: this.ways,
+        price: this.price,
+        content: this.content
+      });
+
+      sessionStorage.setItem("requestData", JSON.stringify(this.requestData));
 
       this.$toast.success("申請が完了しました").goAway(2000);
     }

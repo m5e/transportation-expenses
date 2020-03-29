@@ -93,8 +93,6 @@ export default {
 label {
   margin-top: 15%;
 }
-.container {
-}
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */

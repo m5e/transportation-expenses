@@ -6,13 +6,11 @@
       >
         <tbody>
           <th>申請日時</th>
-          <th>ステータス</th>
           <th>申請内容</th>
           <tr v-for="list in requestLists" :key="list.id">
-            <td>{{ list.date }}</td>
-            <td>{{ list.status }}</td>
+            <td>{{ list.requestDate }}</td>
             <td>
-              <button class="button detail-button" @click="showDetail(list.id)">
+              <button class="button detail-button">
                 詳細
               </button>
             </td>
@@ -20,7 +18,7 @@
         </tbody>
       </table>
 
-      <div class="modal" :class="{ 'is-active': isModalActive }">
+      <!-- <div class="modal" :class="{ 'is-active': isModalActive }">
         <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">
@@ -46,7 +44,7 @@
             <button class="button" @click="switchDisplayModal">戻る</button>
           </footer>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -56,10 +54,11 @@ export default {
   components: {},
   data() {
     return {
-      requestLists: [
+      requestLists: [],
+      defaultLists: [
         {
           id: 1,
-          date: "2020/4/1",
+          requestDate: "2020/4/1",
           status: "課長まで承認済み",
           location: "五反田",
           vehicle: "電車",
@@ -69,7 +68,7 @@ export default {
         },
         {
           id: 2,
-          date: "2020/4/3",
+          requestDate: "2020/4/3",
           status: "申請中",
           location: "品川",
           vehicle: "電車",
@@ -79,7 +78,7 @@ export default {
         },
         {
           id: 3,
-          date: "2020/4/3",
+          requestDate: "2020/4/3",
           status: "申請中",
           location: "品川",
           vehicle: "電車",
@@ -89,7 +88,7 @@ export default {
         },
         {
           id: 4,
-          date: "2020/4/3",
+          requestDate: "2020/4/3",
           status: "申請中",
           location: "品川",
           vehicle: "電車",
@@ -102,18 +101,28 @@ export default {
       isModalActive: false
     };
   },
-  mounted() {},
+  mounted() {
+    this.initialDisplay();
+  },
   methods: {
-    showDetail(targetId) {
-      this.isModalActive = true;
-
-      this.requestDetail = this.requestLists.filter(
-        list => list.id === targetId
-      );
-    },
-    switchDisplayModal() {
-      this.isModalActive = !this.isModalActive;
+    initialDisplay() {
+      const data = JSON.parse(sessionStorage.getItem("requestData"));
+      this.requestLists =
+        data && data.length !== null ? data : this.defaultLists;
     }
+    // showDetail(targetId) {
+    //   const data = sessionStorage.getItem("requestData");
+
+    //   console.log("data", data);
+    //   this.requestLists = data.length > 0 ? data : this.defaultLists;
+
+    //   this.isModalActive = true;
+
+    //   this.requestDetail = requestLists.filter(list => list.id === targetId);
+    // },
+    // switchDisplayModal() {
+    //   this.isModalActive = !this.isModalActive;
+    // }
   }
 };
 </script>
@@ -122,6 +131,9 @@ export default {
 table {
   text-align-last: center;
   margin: 15% 0% 0% 0%;
+}
+table.is-striped.is-narrow.is-hoverable.is-fullwidth tbody tr:hover {
+  background-color: hsl(173, 76%, 87%);
 }
 .detail-button {
   width: 60%;
