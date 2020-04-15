@@ -41,7 +41,8 @@ module.exports = {
 
   css: [
     // node.js module but we specify the pre-processor
-    { src: "bulma/bulma.sass", lang: "sass" }
+    { src: "bulma/bulma.sass", lang: "sass" },
+    { src: "~assets/css/style.scss" }
   ],
   modules: ["@nuxtjs/toast"],
 

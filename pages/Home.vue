@@ -22,11 +22,9 @@ export default {
 </script>
 
 <style scoped>
-@import url("http://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
-
 h1 {
   margin: 0% 0% 0% 0%;
-  font-family: "Kaushan Script", cursive;
+  font-family: "Kaushan-Script", cursive;
 }
 
 .hero {
