@@ -22,16 +22,17 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+@import url("http://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 
 h1 {
   margin: 0% 0% 0% 0%;
   font-family: "Kaushan Script", cursive;
 }
+
 .hero {
   background-image: linear-gradient(
-      rgba(89, 172, 154, 0.65),
-      rgba(16, 90, 68, 0.65)
+      rgba(90, 182, 162, 0.63),
+      rgba(12, 94, 66, 0.767)
     ),
     url("../images/rome.jpg");
 }
