@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="home-container">
+    <section>
       <div class="hero first is-primary is-large">
         <div class="hero-body">
           <div class="hero-container">
@@ -59,6 +59,7 @@ export default {
     url("../images/image.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 .second {
   background-image: linear-gradient(
@@ -68,6 +69,7 @@ export default {
     url("../images/image2.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 .third {
   background-image: linear-gradient(
@@ -77,6 +79,7 @@ export default {
     url("../images/image3.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 .fourth {
   background-image: linear-gradient(
@@ -86,5 +89,6 @@ export default {
     url("../images/image4.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
