@@ -1,13 +1,38 @@
 <template>
-  <section class="home-container">
-    <div class="hero is-primary is-large">
-      <div class="hero-body">
-        <div class="hero-container">
-          <h1 class="subtitle">Transportation Expenses Application</h1>
+  <div>
+    <section class="home-container">
+      <div class="hero first is-primary is-large">
+        <div class="hero-body">
+          <div class="hero-container">
+            <h1 class="subtitle application-name">
+              Transportation Expenses Application
+            </h1>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <section>
+      <div class="hero second is-primary is-large">
+        <div class="hero-body">
+          <div class="hero-container"></div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="hero third is-primary is-large">
+        <div class="hero-body">
+          <div class="hero-container"></div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="hero fourth is-primary is-large">
+        <div class="hero-body">
+          <div class="hero-container"></div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -22,16 +47,44 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+.application-name {
   margin: 0% 0% 0% 0%;
   font-family: "Kaushan-Script", cursive;
 }
-
-.hero {
+.first {
   background-image: linear-gradient(
-      rgba(90, 182, 162, 0.63),
+      rgba(90, 127, 182, 0.63),
       rgba(12, 94, 66, 0.767)
     ),
-    url("../images/rome.jpg");
+    url("../images/image.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.second {
+  background-image: linear-gradient(
+      rgba(90, 127, 182, 0.63),
+      rgba(12, 94, 66, 0.767)
+    ),
+    url("../images/image2.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.third {
+  background-image: linear-gradient(
+      rgba(90, 127, 182, 0.63),
+      rgba(12, 94, 66, 0.767)
+    ),
+    url("../images/image3.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.fourth {
+  background-image: linear-gradient(
+      rgba(90, 127, 182, 0.63),
+      rgba(12, 94, 66, 0.767)
+    ),
+    url("../images/image4.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 </style>
