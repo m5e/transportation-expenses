@@ -19,9 +19,9 @@
               <p class="subtitle">javascript</p>
             </div>
           </div>
-          <div class="vue-panel">
+          <div class="bulma-panel">
             <div class="notification is-primary">
-              <p class="subtitle">Vue.js</p>
+              <p class="subtitle">bulma</p>
             </div>
           </div>
           <div class="nuxt-panel">
@@ -103,13 +103,13 @@ export default {
         javascriptPanel[0].classList.remove("javascript-panel-active");
       }
 
-      const vuePanel = document.getElementsByClassName("vue-panel");
-      if (vuePanel.length !== 1) return;
+      const bulmaPanel = document.getElementsByClassName("bulma-panel");
+      if (bulmaPanel.length !== 1) return;
 
       if (currentScrollY > 500) {
-        vuePanel[0].classList.add("vue-panel-active");
+        bulmaPanel[0].classList.add("bulma-panel-active");
       } else {
-        vuePanel[0].classList.remove("vue-panel-active");
+        bulmaPanel[0].classList.remove("bulma-panel-active");
       }
 
       const nuxtPanel = document.getElementsByClassName("nuxt-panel");
@@ -156,7 +156,7 @@ export default {
   opacity: 0;
 }
 
-.vue-panel {
+.bulma-panel {
   padding-top: 15%;
   padding-left: 60%;
   opacity: 0;
@@ -169,7 +169,7 @@ export default {
 }
 
 .javascript-panel-active,
-.vue-panel-active,
+.bulma-panel-active,
 .nuxt-panel-active {
   animation: fadeIn 2s ease 0s 1 normal;
   -webkit-animation: fadeIn 2s ease 0s 1 normal;
