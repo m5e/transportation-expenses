@@ -207,7 +207,7 @@ div.control {
 .index-navbar-unpinned {
   background-image: linear-gradient(
       rgba(90, 127, 182, 0.63),
-      rgba(12, 94, 66, 0.767)
+      rgba(90, 127, 182, 0.63)
     ),
     url("../images/image.jpg");
 
