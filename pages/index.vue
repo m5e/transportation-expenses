@@ -2,7 +2,7 @@
   <section>
     <div>
       <nav class="navbar" role="navigation">
-        <div class="container">
+        <div class="container index-navbar-unpinned">
           <div class="navbar-brand">
             <a class="navbar-item">
               <img
@@ -76,7 +76,9 @@ export default {
       resultData: []
     };
   },
-  mounted() {},
+  mounted() {
+    window.addEventListener("scroll", this.handleBackgroundImage);
+  },
   methods: {
     switchPage() {
       this.selected = event.target.innerText;
@@ -84,7 +86,32 @@ export default {
 
     showSideMenu() {
       this.isShowSideMenu = !this.isShowSideMenu;
+    },
+    handleBackgroundImage() {
+      const containerElement = document.getElementsByClassName("container")[0];
+
+      if (window.pageYOffset <= 120) {
+        containerElement.classList.remove("index-navbar-pinned");
+        containerElement.classList.add("index-navbar-unpinning");
+
+        window.setTimeout(() => {
+          containerElement.classList.remove("index-navbar-unpinning");
+          containerElement.classList.add("index-navbar-unpinned");
+        }, 1000);
+      } else if (120 < window.pageYOffset) {
+        containerElement.classList.add("index-navbar-pinning");
+
+        window.setTimeout(() => {
+          containerElement.classList.remove("index-navbar-unpinned");
+          containerElement.classList.remove("index-navbar-pinning");
+          containerElement.classList.add("index-navbar-pinned");
+        }, 1000);
+      }
     }
+  },
+  // イベントリスナの削除
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleBackgroundImage);
   }
 };
 </script>
@@ -93,6 +120,7 @@ export default {
 label {
   margin-top: 15%;
 }
+
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
@@ -102,6 +130,7 @@ label {
   color: #35495e;
   letter-spacing: 1px;
 }
+
 .subtitle {
   font-weight: 300;
   font-size: 42px;
@@ -109,18 +138,71 @@ label {
   word-spacing: 5px;
   padding-bottom: 15px;
 }
+
 .links {
   padding-top: 15px;
 }
+
 div.control {
   margin-left: 1%;
   margin-right: 3%;
   margin-top: auto;
   margin-bottom: auto;
 }
+
+@media screen and (max-width: 1023px) {
+  .container {
+    position: fixed;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   div.control {
     margin: auto;
   }
+
+  .container {
+    position: fixed;
+    max-width: unset;
+  }
+}
+
+.index-navbar-unpinned {
+  background-image: linear-gradient(
+      rgba(90, 127, 182, 0.63),
+      rgba(12, 94, 66, 0.767)
+    ),
+    url("../images/image.jpg");
+
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.index-navbar-pinning {
+  background-image: ("../images/image.jpg");
+  background-color: white;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translate(0, 10px);
+  transition: all 500ms;
+}
+
+.index-navbar-unpinning {
+  background-image: ("../images/image.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translate(10, 0px);
+  transition: all 500ms;
+}
+
+.index-navbar-pinned {
+  background-image: ("../images/image.jpg");
+  background-color: white;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

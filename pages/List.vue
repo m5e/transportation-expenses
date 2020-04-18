@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section>
     <div>
       <table
         class="table is-bordered table is-striped is-narrow is-hoverable is-fullwidth"
