@@ -66,7 +66,7 @@ export default {
 
 <style scoped>
 .application-name {
-  margin: 0% 0% 0% 0%;
+  margin: 50% 0% 0% 0%;
   font-family: "Kaushan-Script", cursive;
 }
 

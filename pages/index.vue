@@ -82,30 +82,60 @@ export default {
   methods: {
     switchPage() {
       this.selected = event.target.innerText;
+
+      const containerElement = document.getElementsByClassName("container")[0];
+      if (this.selected === "Home") {
+        this.handleBackgroundImage();
+      } else if (
+        this.selected !== "Home" &&
+        containerElement.classList.contains("index-navbar-unpinned")
+      ) {
+        containerElement.classList.remove("index-navbar-unpinned");
+      }
     },
 
     showSideMenu() {
       this.isShowSideMenu = !this.isShowSideMenu;
     },
     handleBackgroundImage() {
+      if (this.selected !== "Home") return;
+
       const containerElement = document.getElementsByClassName("container")[0];
 
-      if (window.pageYOffset <= 120) {
-        containerElement.classList.remove("index-navbar-pinned");
+      const currentPageYOffset = window.pageYOffset;
+
+      if (
+        currentPageYOffset <= 100 &&
+        !containerElement.classList.contains("index-navbar-unpinned")
+      ) {
         containerElement.classList.add("index-navbar-unpinning");
 
         window.setTimeout(() => {
+          containerElement.classList.remove("index-navbar-pinned");
           containerElement.classList.remove("index-navbar-unpinning");
           containerElement.classList.add("index-navbar-unpinned");
-        }, 1000);
-      } else if (120 < window.pageYOffset) {
+
+          // 処理途中でスクロールされていたら再度実行する
+          if (window.pageYOffset !== currentPageYOffset) {
+            this.handleBackgroundImage();
+          }
+        }, 400);
+      } else if (
+        100 < currentPageYOffset &&
+        !containerElement.classList.contains("index-navbar-pinned")
+      ) {
         containerElement.classList.add("index-navbar-pinning");
 
         window.setTimeout(() => {
           containerElement.classList.remove("index-navbar-unpinned");
           containerElement.classList.remove("index-navbar-pinning");
           containerElement.classList.add("index-navbar-pinned");
-        }, 1000);
+
+          // 処理途中でスクロールされていたら再度実行する
+          if (window.pageYOffset !== currentPageYOffset) {
+            this.handleBackgroundImage();
+          }
+        }, 400);
       }
     }
   },
@@ -154,6 +184,9 @@ div.control {
   .container {
     position: fixed;
   }
+  .navbar-burger span {
+    color: white;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -164,6 +197,10 @@ div.control {
   .container {
     position: fixed;
     max-width: unset;
+  }
+
+  .navbar-item.is-active span {
+    font-weight: bold;
   }
 }
 
@@ -195,7 +232,7 @@ div.control {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  transform: translate(10, 0px);
+  transform: translate(0, 10px);
   transition: all 500ms;
 }
 
