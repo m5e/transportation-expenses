@@ -191,6 +191,7 @@ div.control {
 
 .index-navbar-unpinning {
   background-image: ("../images/image.jpg");
+  background-color: white;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
