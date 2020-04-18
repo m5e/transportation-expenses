@@ -81,44 +81,43 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+    this.swichDisplaySection;
   },
   methods: {
-    // コンテンツの表示タイミングを制御
+    // スクロールイベント
     handleScroll() {
+      this.swichDisplaySection("javascript-panel");
+      this.swichDisplaySection("bulma-panel");
+      this.swichDisplaySection("nuxt-panel");
+    },
+    // セクションの表示切替
+    swichDisplaySection(panel) {
       const firstElement = document.getElementsByClassName("first");
       if (firstElement.length !== 1) return;
-
-      const javascriptPanel = document.getElementsByClassName(
-        "javascript-panel"
-      );
-      if (javascriptPanel.length !== 1) return;
 
       const currentScrollY =
         DEFALT_SCROLL_TOP - firstElement[0].getBoundingClientRect().y;
 
-      // 導入文の表示切り替え
-      if (currentScrollY > 200) {
-        javascriptPanel[0].classList.add("javascript-panel-active");
-      } else {
-        javascriptPanel[0].classList.remove("javascript-panel-active");
-      }
+      const panelElement = document.getElementsByClassName(`${panel}`);
+      if (panelElement.length !== 1) return;
 
-      const bulmaPanel = document.getElementsByClassName("bulma-panel");
-      if (bulmaPanel.length !== 1) return;
-
-      if (currentScrollY > 500) {
-        bulmaPanel[0].classList.add("bulma-panel-active");
-      } else {
-        bulmaPanel[0].classList.remove("bulma-panel-active");
-      }
-
-      const nuxtPanel = document.getElementsByClassName("nuxt-panel");
-      if (nuxtPanel.length !== 1) return;
-
-      if (currentScrollY > 800) {
-        nuxtPanel[0].classList.add("nuxt-panel-active");
-      } else {
-        nuxtPanel[0].classList.remove("nuxt-panel-active");
+      if (
+        panel === "javascript-panel" &&
+        200 < currentScrollY &&
+        currentScrollY <= 500
+      ) {
+        panelElement[0].classList.add("fade");
+      } else if (
+        panel === "bulma-panel" &&
+        500 < currentScrollY &&
+        currentScrollY <= 800
+      ) {
+        panelElement[0].classList.add("fade");
+      } else if (panel === "nuxt-panel" && 800 < currentScrollY) {
+        panelElement[0].classList.add("fade");
+      } else if (currentScrollY < 200) {
+        if (panelElement[0].classList.contains("fade"))
+          panelElement[0].classList.remove("fade");
       }
     }
   },
@@ -168,10 +167,8 @@ export default {
   opacity: 0;
 }
 
-.javascript-panel-active,
-.bulma-panel-active,
-.nuxt-panel-active {
-  animation: fadeIn 2s ease 0s 1 normal;
+.fade {
+  animation: fadeIn 0.2s ease 0.3s 1 normal;
   -webkit-animation: fadeIn 2s ease 0s 1 normal;
   opacity: 1;
 }
