@@ -41,7 +41,7 @@
         >出発地点を入力して下さい</span
       >
       <div :style="{ marginTop: '10%' }">
-        <button class="button is-primary" @click="refreshhDisplayRelayPoint">
+        <button class="button is-info" @click="refreshhDisplayRelayPoint">
           {{
             !isDisplayRelayPoint ? "中継地点を追加する" : "中継地点を削除する"
           }}
@@ -90,9 +90,7 @@
       >
       <div class="field is-grouped">
         <p class="control">
-          <a
-            class="button is-primary request-button"
-            @click="switchDisplayModal"
+          <a class="button is-info request-button" @click="switchDisplayModal"
             >申請</a
           >
         </p>

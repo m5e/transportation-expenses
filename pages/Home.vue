@@ -13,24 +13,6 @@
           <div class="hero-container"></div>
         </div>
       </div>
-      <div class="hero">
-        <div class="hero-body">
-          <div class="hero-container">
-            <section class="fadein">
-              <h2>情報設計</h2>
-              <p>何かしらの説明文。何かしらの説明文。何かしらの説明文。</p>
-            </section>
-            <section class="fadein">
-              <h2>サイトマップ</h2>
-              <p>何かしらの説明文。何かしらの説明文。何かしらの説明文。</p>
-            </section>
-            <section class="fadein">
-              <h2>ワイヤーフレーム</h2>
-              <p>何かしらの説明文。何かしらの説明文。何かしらの説明文。</p>
-            </section>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>

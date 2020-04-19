@@ -157,7 +157,7 @@ table {
 }
 
 table.is-striped.is-narrow.is-hoverable.is-fullwidth tbody tr:hover {
-  background-color: hsl(173, 76%, 87%);
+  background-color: hsla(217, 67%, 88%, 0.897);
 }
 
 .detail-button {

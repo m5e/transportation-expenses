@@ -6,7 +6,7 @@
           <div class="navbar-brand">
             <a class="navbar-item">
               <img
-                src="https://bulma.io/images/bulma-logo.png"
+                src="https://bulma.io/images/made-with-bulma--black.png"
                 width="112"
                 height="28"
               />
@@ -78,25 +78,13 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleNavBackgroundImage);
-    this.switchFixedClass();
+    this.handleNavBackgroundImage();
   },
   methods: {
-    // ナビゲーションバーのポジション設定の切替
-    switchFixedClass() {
-      const containerElement = document.getElementsByClassName("container")[0];
-      if (this.selected === "Home") {
-        containerElement.classList.add("container-fixed");
-      } else {
-        containerElement.classList.remove("container-fixed");
-      }
-    },
-
     // ページ切替
     refreshSelectedPage() {
       this.selected = event.target.innerText;
       if (this.selected === "Home") this.handleNavBackgroundImage();
-
-      this.switchFixedClass();
     },
 
     showSideMenu() {
@@ -105,8 +93,6 @@ export default {
 
     // ナビゲーションバーの背景切替
     handleNavBackgroundImage() {
-      if (this.selected !== "Home") return;
-
       const containerElement = document.getElementsByClassName("container")[0];
       const currentPageYOffset = window.pageYOffset;
       if (
@@ -170,7 +156,7 @@ label {
 .subtitle {
   font-weight: 300;
   font-size: 42px;
-  color: #4457a8;
+  color: #344696;
   word-spacing: 5px;
   padding-bottom: 15px;
 }
@@ -191,27 +177,24 @@ div.control {
     margin: auto;
   }
 
-  .container {
-    max-width: unset;
-  }
-
   .navbar-item.is-active span {
     font-weight: bold;
   }
 }
 
-.container-fixed {
+.container {
+  max-width: unset;
   position: fixed;
 }
 
 .navbar {
-  background-color: rgba(90, 127, 182, 0.1);
+  background-color: rgba(90, 127, 182, 0);
 }
 
 .index-background {
   background-image: linear-gradient(
-      rgba(193, 196, 201, 0.4),
-      rgba(243, 245, 247, 0.795)
+      rgba(197, 201, 206, 0.685),
+      rgba(163, 173, 182, 0.795)
     ),
     url("../images/image.jpg");
   background-attachment: fixed;
@@ -220,7 +203,7 @@ div.control {
 }
 
 .index-navbar-pinning {
-  background-color: rgba(90, 127, 182, 0.63);
+  background-color: rgba(90, 127, 182, 0.3);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -229,7 +212,7 @@ div.control {
 }
 
 .index-navbar-unpinning {
-  background-color: rgba(90, 127, 182, 0.63);
+  background-color: rgba(90, 127, 182, 0.3);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -238,7 +221,7 @@ div.control {
 }
 
 .index-navbar-pinned {
-  background-color: rgba(90, 127, 182, 0.63);
+  background-color: rgba(90, 127, 182, 0.6);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
