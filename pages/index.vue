@@ -2,7 +2,7 @@
   <section class="index-background">
     <div>
       <nav class="navbar" role="navigation">
-        <div class="container index-navbar-unpinned">
+        <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item">
               <img
@@ -78,13 +78,11 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleNavBackgroundImage);
-    this.handleNavBackgroundImage();
   },
   methods: {
     // ページ切替
     refreshSelectedPage() {
       this.selected = event.target.innerText;
-      if (this.selected === "Home") this.handleNavBackgroundImage();
     },
 
     showSideMenu() {
@@ -95,16 +93,12 @@ export default {
     handleNavBackgroundImage() {
       const containerElement = document.getElementsByClassName("container")[0];
       const currentPageYOffset = window.pageYOffset;
-      if (
-        currentPageYOffset <= 100 &&
-        !containerElement.classList.contains("index-navbar-unpinned")
-      ) {
-        containerElement.classList.add("index-navbar-unpinning");
+      if (currentPageYOffset <= 100) {
+        containerElement.classList.add("index-navbar-pinning");
 
         window.setTimeout(() => {
           containerElement.classList.remove("index-navbar-pinned");
-          containerElement.classList.remove("index-navbar-unpinning");
-          containerElement.classList.add("index-navbar-unpinned");
+          containerElement.classList.remove("index-navbar-pinning");
 
           // 処理途中でスクロールされていたら再度実行する
           if (window.pageYOffset !== currentPageYOffset) {
@@ -118,7 +112,6 @@ export default {
         containerElement.classList.add("index-navbar-pinning");
 
         window.setTimeout(() => {
-          containerElement.classList.remove("index-navbar-unpinned");
           containerElement.classList.remove("index-navbar-pinning");
           containerElement.classList.add("index-navbar-pinned");
 
@@ -203,15 +196,6 @@ div.control {
 }
 
 .index-navbar-pinning {
-  background-color: rgba(90, 127, 182, 0.3);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transform: translate(0, 10px);
-  transition: all 500ms;
-}
-
-.index-navbar-unpinning {
   background-color: rgba(90, 127, 182, 0.3);
   background-attachment: fixed;
   background-repeat: no-repeat;
