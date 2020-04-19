@@ -80,7 +80,7 @@ export default {
     window.addEventListener("scroll", this.handleNavBackgroundImage);
   },
   methods: {
-    // ページ切替
+    // Page switching
     refreshSelectedPage() {
       this.selected = event.target.innerText;
     },
@@ -89,7 +89,7 @@ export default {
       this.isShowSideMenu = !this.isShowSideMenu;
     },
 
-    // ナビゲーションバーの背景切替
+    // Switching the background of the navigation bar
     handleNavBackgroundImage() {
       const containerElement = document.getElementsByClassName("container")[0];
       const currentPageYOffset = window.pageYOffset;
@@ -100,7 +100,7 @@ export default {
           containerElement.classList.remove("index-navbar-pinned");
           containerElement.classList.remove("index-navbar-pinning");
 
-          // 処理途中でスクロールされていたら再度実行する
+          // If scrolled during processing, try again
           if (window.pageYOffset !== currentPageYOffset) {
             this.handleNavBackgroundImage();
           }
@@ -115,7 +115,7 @@ export default {
           containerElement.classList.remove("index-navbar-pinning");
           containerElement.classList.add("index-navbar-pinned");
 
-          // 処理途中でスクロールされていたら再度実行する
+          // If scrolled during processing, try again
           if (window.pageYOffset !== currentPageYOffset) {
             this.handleNavBackgroundImage();
           }
@@ -124,7 +124,7 @@ export default {
     }
   },
 
-  // イベントリスナの削除
+  // Remove event listener
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleNavBackgroundImage);
   }

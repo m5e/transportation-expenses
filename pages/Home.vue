@@ -18,7 +18,7 @@
 </template>
 
 <script>
-// 初期表示時の top 座標
+// Top coordinate at initial display
 const DEFALT_SCROLL_TOP = 52;
 
 export default {
@@ -30,7 +30,7 @@ export default {
     window.addEventListener("scroll", this.handleScroll);
   },
   methods: {
-    // スクロールイベント
+    // Scroll event
     handleScroll() {
       const firstElement = document.getElementsByClassName("first");
       if (firstElement.length !== 1) return;
@@ -39,7 +39,7 @@ export default {
         DEFALT_SCROLL_TOP - firstElement[0].getBoundingClientRect().y;
     }
   },
-  // イベントリスナの削除
+  // Remove event listener
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);
   }
