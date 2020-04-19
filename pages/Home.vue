@@ -3,7 +3,7 @@
     <div class="hero home-background-image is-fullheight">
       <div class="hero-body">
         <div class="hero-container">
-          <h1 class="subtitle has-text-light application-name">
+          <h1 class="subtitle application-name">
             Transportation Expenses Application
           </h1>
         </div>

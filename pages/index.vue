@@ -77,10 +77,11 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener("scroll", this.handleBackgroundImage);
+    window.addEventListener("scroll", this.handleNavBackgroundImage);
     this.switchFixedClass();
   },
   methods: {
+    // ナビゲーションバーのポジション設定の切替
     switchFixedClass() {
       const containerElement = document.getElementsByClassName("container")[0];
       if (this.selected === "Home") {
@@ -90,13 +91,10 @@ export default {
       }
     },
 
+    // ページ切替
     refreshSelectedPage() {
       this.selected = event.target.innerText;
-
-      const containerElement = document.getElementsByClassName("container")[0];
-      if (this.selected === "Home") {
-        this.handleBackgroundImage();
-      }
+      if (this.selected === "Home") this.handleNavBackgroundImage();
 
       this.switchFixedClass();
     },
@@ -104,13 +102,13 @@ export default {
     showSideMenu() {
       this.isShowSideMenu = !this.isShowSideMenu;
     },
-    handleBackgroundImage() {
+
+    // ナビゲーションバーの背景切替
+    handleNavBackgroundImage() {
       if (this.selected !== "Home") return;
 
       const containerElement = document.getElementsByClassName("container")[0];
-
       const currentPageYOffset = window.pageYOffset;
-
       if (
         currentPageYOffset <= 100 &&
         !containerElement.classList.contains("index-navbar-unpinned")
@@ -124,7 +122,7 @@ export default {
 
           // 処理途中でスクロールされていたら再度実行する
           if (window.pageYOffset !== currentPageYOffset) {
-            this.handleBackgroundImage();
+            this.handleNavBackgroundImage();
           }
         }, 400);
       } else if (
@@ -140,15 +138,16 @@ export default {
 
           // 処理途中でスクロールされていたら再度実行する
           if (window.pageYOffset !== currentPageYOffset) {
-            this.handleBackgroundImage();
+            this.handleNavBackgroundImage();
           }
         }, 400);
       }
     }
   },
+
   // イベントリスナの削除
   beforeDestroy() {
-    window.removeEventListener("scroll", this.handleBackgroundImage);
+    window.removeEventListener("scroll", this.handleNavBackgroundImage);
   }
 };
 </script>
@@ -171,7 +170,7 @@ label {
 .subtitle {
   font-weight: 300;
   font-size: 42px;
-  color: #526488;
+  color: #4457a8;
   word-spacing: 5px;
   padding-bottom: 15px;
 }
@@ -187,12 +186,6 @@ div.control {
   margin-bottom: auto;
 }
 
-@media screen and (max-width: 1023px) {
-  .container {
-    position: fixed;
-  }
-}
-
 @media screen and (min-width: 1024px) {
   div.control {
     margin: auto;
@@ -202,21 +195,25 @@ div.control {
     max-width: unset;
   }
 
-  .container-fixed {
-    position: fixed;
-  }
-
-  .navbar {
-    background-color: rgba(90, 127, 182, 0);
-  }
-
   .navbar-item.is-active span {
     font-weight: bold;
   }
 }
 
+.container-fixed {
+  position: fixed;
+}
+
+.navbar {
+  background-color: rgba(90, 127, 182, 0.1);
+}
+
 .index-background {
-  background-color: rgba(90, 127, 182, 0.4);
+  background-image: linear-gradient(
+      rgba(193, 196, 201, 0.4),
+      rgba(243, 245, 247, 0.795)
+    ),
+    url("../images/image.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
