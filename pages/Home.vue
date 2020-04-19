@@ -71,11 +71,6 @@ export default {
 }
 
 .home-background-image {
-  background-image: linear-gradient(
-      rgba(90, 127, 182, 0.63),
-      rgba(90, 127, 182, 0.63)
-    ),
-    url("../images/image.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;

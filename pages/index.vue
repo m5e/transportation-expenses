@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="index-background">
     <div>
       <nav class="navbar" role="navigation">
         <div class="container index-navbar-unpinned">
@@ -37,19 +37,19 @@
                 class="navbar-item"
                 :class="{ 'is-active': selected === 'Home' }"
               >
-                <span @click="switchPage">Home</span>
+                <span @click="refreshSelectedPage">Home</span>
               </a>
               <a
                 class="navbar-item"
                 :class="{ 'is-active': selected === 'Request' }"
               >
-                <span @click="switchPage">Request</span>
+                <span @click="refreshSelectedPage">Request</span>
               </a>
               <a
                 class="navbar-item"
                 :class="{ 'is-active': selected === 'List' }"
               >
-                <span @click="switchPage">List</span>
+                <span @click="refreshSelectedPage">List</span>
               </a>
             </div>
           </div>
@@ -78,20 +78,27 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleBackgroundImage);
+    this.switchFixedClass();
   },
   methods: {
-    switchPage() {
+    switchFixedClass() {
+      const containerElement = document.getElementsByClassName("container")[0];
+      if (this.selected === "Home") {
+        containerElement.classList.add("container-fixed");
+      } else {
+        containerElement.classList.remove("container-fixed");
+      }
+    },
+
+    refreshSelectedPage() {
       this.selected = event.target.innerText;
 
       const containerElement = document.getElementsByClassName("container")[0];
       if (this.selected === "Home") {
         this.handleBackgroundImage();
-      } else if (
-        this.selected !== "Home" &&
-        containerElement.classList.contains("index-navbar-unpinned")
-      ) {
-        containerElement.classList.remove("index-navbar-unpinned");
       }
+
+      this.switchFixedClass();
     },
 
     showSideMenu() {
@@ -184,9 +191,6 @@ div.control {
   .container {
     position: fixed;
   }
-  .navbar-burger span {
-    color: white;
-  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -195,8 +199,15 @@ div.control {
   }
 
   .container {
-    position: fixed;
     max-width: unset;
+  }
+
+  .container-fixed {
+    position: fixed;
+  }
+
+  .navbar {
+    background-color: rgba(90, 127, 182, 0);
   }
 
   .navbar-item.is-active span {
@@ -204,21 +215,15 @@ div.control {
   }
 }
 
-.index-navbar-unpinned {
-  background-image: linear-gradient(
-      rgba(90, 127, 182, 0.63),
-      rgba(90, 127, 182, 0.63)
-    ),
-    url("../images/image.jpg");
-
+.index-background {
+  background-color: rgba(90, 127, 182, 0.4);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .index-navbar-pinning {
-  background-image: ("../images/image.jpg");
-  background-color: white;
+  background-color: rgba(90, 127, 182, 0.63);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -227,8 +232,7 @@ div.control {
 }
 
 .index-navbar-unpinning {
-  background-image: ("../images/image.jpg");
-  background-color: white;
+  background-color: rgba(90, 127, 182, 0.63);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -237,8 +241,7 @@ div.control {
 }
 
 .index-navbar-pinned {
-  background-image: ("../images/image.jpg");
-  background-color: white;
+  background-color: rgba(90, 127, 182, 0.63);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;

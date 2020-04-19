@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="list-container">
     <div>
       <table
         class="table is-bordered table is-striped is-narrow is-hoverable is-fullwidth"
@@ -144,13 +144,22 @@ export default {
 </script>
 
 <style scoped>
+.list-container {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 15%;
+  padding-bottom: 100%;
+}
+
 table {
   text-align-last: center;
-  margin: 15% 0% 0% 0%;
 }
+
 table.is-striped.is-narrow.is-hoverable.is-fullwidth tbody tr:hover {
   background-color: hsl(173, 76%, 87%);
 }
+
 .detail-button {
   width: 60%;
 }
