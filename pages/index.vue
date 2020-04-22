@@ -5,11 +5,7 @@
         <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item">
-              <img
-                src="https://bulma.io/images/made-with-bulma--black.png"
-                width="112"
-                height="28"
-              />
+              <img src="https://bulma.io/images/made-with-bulma--black.png" width="112" height="28" />
             </a>
             <a
               role="button"
@@ -26,29 +22,20 @@
             <div class="control">
               <div class="tags has-addons">
                 <span class="tag is-dark">作成中</span>
-                <span class="tag is-info">1.0.0</span>
+                <span class="tag is-primary">1.0.0</span>
               </div>
             </div>
           </div>
 
           <div class="navbar-menu" :class="{ 'is-active': isShowSideMenu }">
             <div class="navbar-start">
-              <a
-                class="navbar-item"
-                :class="{ 'is-active': selected === 'Home' }"
-              >
+              <a class="navbar-item" :class="{ 'is-active': selected === 'Home' }">
                 <span @click="refreshSelectedPage">Home</span>
               </a>
-              <a
-                class="navbar-item"
-                :class="{ 'is-active': selected === 'Request' }"
-              >
+              <a class="navbar-item" :class="{ 'is-active': selected === 'Request' }">
                 <span @click="refreshSelectedPage">Request</span>
               </a>
-              <a
-                class="navbar-item"
-                :class="{ 'is-active': selected === 'List' }"
-              >
+              <a class="navbar-item" :class="{ 'is-active': selected === 'List' }">
                 <span @click="refreshSelectedPage">List</span>
               </a>
             </div>
@@ -136,24 +123,6 @@ label {
   margin-top: 15%;
 }
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #344696;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
 .links {
   padding-top: 15px;
 }
@@ -181,7 +150,7 @@ div.control {
 }
 
 .navbar {
-  background-color: rgba(90, 127, 182, 0);
+  background-color: rgba(52, 167, 128, 0);
 }
 
 .index-background {
@@ -196,7 +165,7 @@ div.control {
 }
 
 .index-navbar-pinning {
-  background-color: rgba(90, 127, 182, 0.3);
+  background-color: rgba(52, 167, 128, 0.6);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -205,7 +174,7 @@ div.control {
 }
 
 .index-navbar-pinned {
-  background-color: rgba(90, 127, 182, 0.6);
+  background-color: rgba(52, 167, 128, 0.6);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
