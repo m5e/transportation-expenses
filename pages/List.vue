@@ -1,18 +1,14 @@
 <template>
   <section class="list-container">
     <div>
-      <table
-        class="table is-bordered table is-striped is-narrow is-hoverable is-fullwidth"
-      >
+      <table class="table is-bordered table is-striped is-narrow is-hoverable is-fullwidth">
         <tbody>
           <th>申請日時</th>
           <th>申請内容</th>
           <tr v-for="list in requestLists" :key="list.id">
             <td>{{ list.requestDate }}</td>
             <td>
-              <button class="button detail-button" @click="showDetail(list.id)">
-                詳細
-              </button>
+              <button class="button detail-button" @click="showDetail(list.id)">詳細</button>
             </td>
           </tr>
         </tbody>
@@ -23,11 +19,7 @@
         <div class="modal-card">
           <header class="modal-card-head">
             <p class="modal-card-title">申請内容の詳細</p>
-            <button
-              class="delete"
-              aria-label="close"
-              @click="switchDisplayModal"
-            ></button>
+            <button class="delete" aria-label="close" @click="switchDisplayModal"></button>
           </header>
           <section class="modal-card-body">
             申請内容は下記のとおりです
@@ -36,9 +28,7 @@
               <li>業務内容・行先：{{ detail.content }}</li>
               <li>乗り物 ：{{ detail.vehicle }}</li>
               <li>出発地点 ：{{ detail.startPoint }}</li>
-              <li v-if="detail.relayPoint !== ''">
-                中継地点 ：{{ detail.relayPoint }}
-              </li>
+              <li v-if="detail.relayPoint !== ''">中継地点 ：{{ detail.relayPoint }}</li>
               <li>到着地点 ：{{ detail.goalPoint }}</li>
               <li>請求先 ：{{ detail.request }}</li>
               <li>片道・往復 ：{{ detail.ways }}</li>
@@ -157,7 +147,7 @@ table {
 }
 
 table.is-striped.is-narrow.is-hoverable.is-fullwidth tbody tr:hover {
-  background-color: hsla(217, 67%, 88%, 0.897);
+  background-color: hsla(173, 67%, 88%, 0.897);
 }
 
 .detail-button {
