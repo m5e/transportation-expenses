@@ -112,6 +112,12 @@ export default {
   left: 60%;
 }
 
+@media screen and (max-width: 700px) {
+  div.image-pc-right {
+    top: 95%;
+  }
+}
+
 .image-pc-right {
   position: absolute;
   left: 50%;

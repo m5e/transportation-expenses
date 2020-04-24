@@ -173,7 +173,7 @@ select {
   width: 100%;
 }
 .request-container {
-  width: 90%;
+  width: 80%;
   margin-right: auto;
   margin-left: auto;
 }
