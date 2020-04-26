@@ -4,7 +4,9 @@
       <section>
         <div class="hero-body">
           <div class="hero-container">
-            <h1 class="subtitle application-name">Transportation Expenses Application</h1>
+            <h1 class="subtitle application-name">
+              Transportation Expenses Application
+            </h1>
           </div>
         </div>
       </section>
@@ -15,9 +17,8 @@
         <h2 class="title">Programming language</h2>
         <div class="hero-body fadein-content">
           <div class="hero-container">
-            <p class="content">javascript</p>
-            <p class="content">bulma</p>
             <p class="content">Nuxt.js</p>
+            <p class="content">bulma</p>
           </div>
           <div class="hero-container image-pc-right">
             <img src="../images/image-pc.jpg" />
@@ -47,6 +48,7 @@
           </div>
           <div class="hero-container">
             <p class="content">animate.css</p>
+            <p class="content">vuejs-datepicker</p>
             <p class="content">material-design-icons</p>
           </div>
         </div>
