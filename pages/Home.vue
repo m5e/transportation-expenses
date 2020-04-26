@@ -112,10 +112,9 @@ export default {
   left: 60%;
 }
 
-@media screen and (max-width: 700px) {
-  div.image-pc-right {
-    top: 95%;
-  }
+.title {
+  font-family: "Kaushan-Script", cursive;
+  margin-left: 3%;
 }
 
 .image-pc-right {
@@ -146,8 +145,9 @@ export default {
   transform: translate(0, 0);
 }
 
-.title {
-  font-family: "Kaushan-Script", cursive;
-  margin-left: 3%;
+@media screen and (max-width: 700px) {
+  div.image-pc-right {
+    top: 95%;
+  }
 }
 </style>

@@ -134,16 +134,6 @@ div.control {
   margin-bottom: auto;
 }
 
-@media screen and (min-width: 1024px) {
-  div.control {
-    margin: auto;
-  }
-
-  .navbar-item.is-active span {
-    font-weight: bold;
-  }
-}
-
 .container {
   max-width: unset;
   position: fixed;
@@ -178,5 +168,16 @@ div.control {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/** PC */
+@media screen and (min-width: 1024px) {
+  div.control {
+    margin: auto;
+  }
+
+  .navbar-item.is-active span {
+    font-weight: bold;
+  }
 }
 </style>

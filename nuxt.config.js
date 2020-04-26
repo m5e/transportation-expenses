@@ -64,6 +64,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    transpile: ["vuejs-datepicker"], // iE11対応
     /*
      ** Run ESLint on save
      */

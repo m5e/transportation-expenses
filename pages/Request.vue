@@ -2,16 +2,23 @@
   <section class="request-container">
     <div>
       <label class="label">日付</label>
-      <input
-        type="date"
-        class="input"
-        :class="{ 'is-danger': requestDate === '' }"
-        v-model="requestDate"
+      <date-picker
+        :format="datePickerFormat"
+        :class="{ 'is-danger': date === '' }"
+        v-model="date"
       />
-      <span v-if="requestDate === ''" :style="{ color: 'red' }">日付を設定してください</span>
+      <span v-if="date === ''" :style="{ color: 'red' }"
+        >日付を設定してください</span
+      >
       <label class="label">業務内容・行先</label>
-      <textarea class="textarea" :class="{ 'is-danger': content === '' }" v-model="content" />
-      <span v-if="content === ''" :style="{ color: 'red' }">業務内容もしくは目的地を入力してください</span>
+      <textarea
+        class="textarea"
+        :class="{ 'is-danger': content === '' }"
+        v-model="content"
+      />
+      <span v-if="content === ''" :style="{ color: 'red' }"
+        >業務内容もしくは目的地を入力してください</span
+      >
       <label class="label">乗り物</label>
       <select class="select" v-model="vehicle">
         <option>電車</option>
@@ -20,12 +27,18 @@
         <option>新幹線</option>
       </select>
       <label class="label">出発地点</label>
-      <textarea class="textarea" :class="{ 'is-danger': startPoint === '' }" v-model="startPoint" />
-      <span v-if="startPoint === ''" :style="{ color: 'red' }">出発地点を入力して下さい</span>
+      <textarea
+        class="textarea"
+        :class="{ 'is-danger': startPoint === '' }"
+        v-model="startPoint"
+      />
+      <span v-if="startPoint === ''" :style="{ color: 'red' }"
+        >出発地点を入力して下さい</span
+      >
       <div :style="{ marginTop: '10%' }">
         <button class="button is-primary" @click="refreshhDisplayRelayPoint">
           {{
-          !isDisplayRelayPoint ? "中継地点を追加する" : "中継地点を削除する"
+            !isDisplayRelayPoint ? "中継地点を追加する" : "中継地点を削除する"
           }}
         </button>
       </div>
@@ -36,11 +49,19 @@
           :class="{ 'is-danger': relayPoint === '' }"
           v-model="relayPoint"
         />
-        <span v-if="relayPoint === ''" :style="{ color: 'red' }">中継地点を入力して下さい</span>
+        <span v-if="relayPoint === ''" :style="{ color: 'red' }"
+          >中継地点を入力して下さい</span
+        >
       </div>
       <label class="label">到着地点</label>
-      <textarea class="textarea" :class="{ 'is-danger': goalPoint === '' }" v-model="goalPoint" />
-      <span v-if="goalPoint === ''" :style="{ color: 'red' }">到着地点を入力して下さい</span>
+      <textarea
+        class="textarea"
+        :class="{ 'is-danger': goalPoint === '' }"
+        v-model="goalPoint"
+      />
+      <span v-if="goalPoint === ''" :style="{ color: 'red' }"
+        >到着地点を入力して下さい</span
+      >
       <label class="label">請求先</label>
       <select class="select" v-model="request">
         <option>客先</option>
@@ -53,10 +74,16 @@
         :class="{ 'is-danger': (price <= 0) | (price === '') }"
         v-model="price"
       />
-      <span v-if="price <= 0 || price === ''" :style="{ color: 'red' }">0 円以上で入力してください</span>
+      <span v-if="price <= 0 || price === ''" :style="{ color: 'red' }"
+        >0 円以上で入力してください</span
+      >
       <div class="field is-grouped">
         <p class="control">
-          <a class="button is-primary request-button" @click="switchDisplayModal">申請</a>
+          <a
+            class="button is-primary request-button"
+            @click="switchDisplayModal"
+            >申請</a
+          >
         </p>
       </div>
 
@@ -65,7 +92,11 @@
         <div class="modal-card">
           <header class="modal-card-head">
             <p class="modal-card-title">申請確認</p>
-            <button class="delete" aria-label="close" @click="switchDisplayModal"></button>
+            <button
+              class="delete"
+              aria-label="close"
+              @click="switchDisplayModal"
+            ></button>
           </header>
           <section class="modal-card-body">
             下記内容で申請してもよろしいでしょうか？
@@ -81,7 +112,9 @@
           </section>
           <footer class="modal-card-foot">
             <button class="button" @click="switchDisplayModal">戻る</button>
-            <button class="button is-primary" @click="onClickApplyButton">決定</button>
+            <button class="button is-primary" @click="onClickApplyButton">
+              決定
+            </button>
           </footer>
         </div>
       </div>
@@ -90,13 +123,16 @@
 </template>
 
 <script>
+import DatePicker from "vuejs-datepicker/src/components/Datepicker.vue";
+
 export default {
-  components: {},
+  components: { DatePicker },
   data() {
     return {
       selected: "交通費申請",
       menuLists: ["交通費申請", "申請一覧"],
       isModalActive: false,
+      date: "", // 申請画面表示用の日付を格納する変数
       requestDate: "",
       vehicle: "電車",
       startPoint: "",
@@ -107,7 +143,8 @@ export default {
       price: 0,
       content: "",
       isDisplayRelayPoint: false,
-      requestData: []
+      requestData: [],
+      datePickerFormat: "yyyy/MM/dd" // date-picker のフォーマット
     };
   },
   mounted() {},
@@ -115,6 +152,12 @@ export default {
     /** Switching the modal display state */
     switchDisplayModal() {
       this.isModalActive = !this.isModalActive;
+
+      if (this.date !== "") {
+        const date = new Date(this.date);
+        this.requestDate = `${date.getFullYear()}/${date.getMonth() +
+          1}/${date.getDate()}`;
+      }
     },
 
     /** Switching the display of relay point items */
