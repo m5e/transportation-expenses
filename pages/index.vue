@@ -5,7 +5,11 @@
         <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item">
-              <img src="https://bulma.io/images/made-with-bulma--black.png" width="112" height="28" />
+              <img
+                src="https://bulma.io/images/made-with-bulma--black.png"
+                width="112"
+                height="28"
+              />
             </a>
             <a
               role="button"
@@ -29,13 +33,22 @@
 
           <div class="navbar-menu" :class="{ 'is-active': isShowSideMenu }">
             <div class="navbar-start">
-              <a class="navbar-item" :class="{ 'is-active': selected === 'Home' }">
+              <a
+                class="navbar-item"
+                :class="{ 'is-active': selected === 'Home' }"
+              >
                 <span @click="refreshSelectedPage">Home</span>
               </a>
-              <a class="navbar-item" :class="{ 'is-active': selected === 'Request' }">
+              <a
+                class="navbar-item"
+                :class="{ 'is-active': selected === 'Request' }"
+              >
                 <span @click="refreshSelectedPage">Request</span>
               </a>
-              <a class="navbar-item" :class="{ 'is-active': selected === 'List' }">
+              <a
+                class="navbar-item"
+                :class="{ 'is-active': selected === 'List' }"
+              >
                 <span @click="refreshSelectedPage">List</span>
               </a>
             </div>
@@ -80,7 +93,7 @@ export default {
     handleNavBackgroundImage() {
       const containerElement = document.getElementsByClassName("container")[0];
       const currentPageYOffset = window.pageYOffset;
-      if (currentPageYOffset <= 100) {
+      if (currentPageYOffset <= 80) {
         containerElement.classList.add("index-navbar-pinning");
 
         window.setTimeout(() => {
@@ -93,7 +106,7 @@ export default {
           }
         }, 400);
       } else if (
-        100 < currentPageYOffset &&
+        80 < currentPageYOffset &&
         !containerElement.classList.contains("index-navbar-pinned")
       ) {
         containerElement.classList.add("index-navbar-pinning");

@@ -12,7 +12,7 @@
       >
       <label class="label">業務内容・行先</label>
       <textarea
-        class="textarea"
+        class="textarea is-small"
         :class="{ 'is-danger': content === '' }"
         v-model="content"
       />
@@ -28,7 +28,7 @@
       </select>
       <label class="label">出発地点</label>
       <textarea
-        class="textarea"
+        class="textarea is-small"
         :class="{ 'is-danger': startPoint === '' }"
         v-model="startPoint"
       />
@@ -45,7 +45,7 @@
       <div v-if="isDisplayRelayPoint">
         <label class="label">中継地点</label>
         <textarea
-          class="textarea"
+          class="textarea is-small"
           :class="{ 'is-danger': relayPoint === '' }"
           v-model="relayPoint"
         />
@@ -55,7 +55,7 @@
       </div>
       <label class="label">到着地点</label>
       <textarea
-        class="textarea"
+        class="textarea is-small"
         :class="{ 'is-danger': goalPoint === '' }"
         v-model="goalPoint"
       />
@@ -134,6 +134,7 @@ export default {
       isModalActive: false,
       date: "", // 申請画面表示用の日付を格納する変数
       requestDate: "",
+      content: "",
       vehicle: "電車",
       startPoint: "",
       relayPoint: "",
@@ -141,7 +142,6 @@ export default {
       request: "自社",
       ways: "往復",
       price: 0,
-      content: "",
       isDisplayRelayPoint: false,
       requestData: [],
       datePickerFormat: "yyyy/MM/dd" // date-picker のフォーマット
@@ -215,11 +215,17 @@ export default {
 select {
   width: 100%;
 }
+
 .request-container {
   width: 80%;
   margin-right: auto;
   margin-left: auto;
 }
+
+.is-danger div input {
+  border-color: #f14668;
+}
+
 .request-button {
   margin: 55% 0% 25% 0%;
   width: 200%;
@@ -228,7 +234,6 @@ select {
 @media screen and (max-width: 1024px) {
   .modal-card {
     width: 80%;
-    margin: 0% 10% 10% 0%;
   }
 }
 /** PC */
