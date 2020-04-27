@@ -2,23 +2,15 @@
   <section class="request-container">
     <div>
       <label class="label">日付</label>
-      <date-picker
-        :format="datePickerFormat"
-        :class="{ 'is-danger': date === '' }"
-        v-model="date"
-      />
-      <span v-if="date === ''" :style="{ color: 'red' }"
-        >日付を設定してください</span
-      >
+      <date-picker :format="datePickerFormat" :class="{ 'is-danger': date ==='' }" v-model="date" />
+      <span v-if="date === ''" :style="{ color: 'red' }">日付を設定してください</span>
       <label class="label">業務内容・行先</label>
       <textarea
         class="textarea is-small"
-        :class="{ 'is-danger': content === '' }"
+        :class="{ 'is-danger': !content.match(/\S/g) }"
         v-model="content"
       />
-      <span v-if="content === ''" :style="{ color: 'red' }"
-        >業務内容もしくは目的地を入力してください</span
-      >
+      <span v-if="!content.match(/\S/g)" :style="{ color: 'red' }">業務内容もしくは目的地を入力してください</span>
       <label class="label">乗り物</label>
       <select class="select" v-model="vehicle">
         <option>電車</option>
@@ -29,16 +21,14 @@
       <label class="label">出発地点</label>
       <textarea
         class="textarea is-small"
-        :class="{ 'is-danger': startPoint === '' }"
+        :class="{ 'is-danger': !startPoint.match(/\S/g) }"
         v-model="startPoint"
       />
-      <span v-if="startPoint === ''" :style="{ color: 'red' }"
-        >出発地点を入力して下さい</span
-      >
+      <span v-if="!startPoint.match(/\S/g)" :style="{ color: 'red' }">出発地点を入力して下さい</span>
       <div :style="{ marginTop: '10%' }">
         <button class="button is-primary" @click="refreshhDisplayRelayPoint">
           {{
-            !isDisplayRelayPoint ? "中継地点を追加する" : "中継地点を削除する"
+          !isDisplayRelayPoint ? "中継地点を追加する" : "中継地点を削除する"
           }}
         </button>
       </div>
@@ -46,22 +36,18 @@
         <label class="label">中継地点</label>
         <textarea
           class="textarea is-small"
-          :class="{ 'is-danger': relayPoint === '' }"
+          :class="{ 'is-danger': !relayPoint.match(/\S/g) }"
           v-model="relayPoint"
         />
-        <span v-if="relayPoint === ''" :style="{ color: 'red' }"
-          >中継地点を入力して下さい</span
-        >
+        <span v-if="relayPoint === ''" :style="{ color: 'red' }">中継地点を入力して下さい</span>
       </div>
       <label class="label">到着地点</label>
       <textarea
         class="textarea is-small"
-        :class="{ 'is-danger': goalPoint === '' }"
+        :class="{ 'is-danger': !goalPoint.match(/\S/g) }"
         v-model="goalPoint"
       />
-      <span v-if="goalPoint === ''" :style="{ color: 'red' }"
-        >到着地点を入力して下さい</span
-      >
+      <span v-if="!goalPoint.match(/\S/g)" :style="{ color: 'red' }">到着地点を入力して下さい</span>
       <label class="label">請求先</label>
       <select class="select" v-model="request">
         <option>客先</option>
@@ -74,16 +60,10 @@
         :class="{ 'is-danger': (price <= 0) | (price === '') }"
         v-model="price"
       />
-      <span v-if="price <= 0 || price === ''" :style="{ color: 'red' }"
-        >0 円以上で入力してください</span
-      >
+      <span v-if="price <= 0 || price === ''" :style="{ color: 'red' }">0 円以上で入力してください</span>
       <div class="field is-grouped">
         <p class="control">
-          <a
-            class="button is-primary request-button"
-            @click="switchDisplayModal"
-            >申請</a
-          >
+          <a class="button is-primary request-button" @click="switchDisplayModal">申請</a>
         </p>
       </div>
 
@@ -92,11 +72,7 @@
         <div class="modal-card">
           <header class="modal-card-head">
             <p class="modal-card-title">申請確認</p>
-            <button
-              class="delete"
-              aria-label="close"
-              @click="switchDisplayModal"
-            ></button>
+            <button class="delete" aria-label="close" @click="switchDisplayModal"></button>
           </header>
           <section class="modal-card-body">
             下記内容で申請してもよろしいでしょうか？
@@ -112,9 +88,7 @@
           </section>
           <footer class="modal-card-foot">
             <button class="button" @click="switchDisplayModal">戻る</button>
-            <button class="button is-primary" @click="onClickApplyButton">
-              決定
-            </button>
+            <button class="button is-primary" @click="onClickApplyButton">決定</button>
           </footer>
         </div>
       </div>
@@ -169,11 +143,11 @@ export default {
       this.isModalActive = false;
 
       if (
-        this.content === "" ||
-        this.requestDate === "" ||
-        this.startPoint === "" ||
-        (this.isDisplayRelayPoint && this.relayPoint === "") ||
-        this.goalPoint === "" ||
+        !this.content.match(/\S/g) ||
+        !this.requestDate.match(/\S/g) ||
+        !this.startPoint.match(/\S/g) ||
+        (this.isDisplayRelayPoint && !this.relayPoint.match(/S/g)) ||
+        !this.goalPoint.match(/S/g) ||
         this.price <= 0
       ) {
         this.$toast.error("未入力の項目があります").goAway(1300);
