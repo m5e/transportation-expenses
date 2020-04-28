@@ -44,8 +44,8 @@ module.exports = {
     { src: "bulma/bulma.sass", lang: "sass" },
     { src: "~assets/css/style.scss" }
   ],
+  plugins: [{ src: "~/plugins/plugin", ssr: false }],
   modules: ["@nuxtjs/toast"],
-
   toast: {
     position: "top-center",
     register: [
@@ -59,7 +59,6 @@ module.exports = {
       }
     ]
   },
-
   /*
    ** Build configuration
    */

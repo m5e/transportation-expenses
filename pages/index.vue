@@ -51,6 +51,12 @@
               >
                 <span @click="refreshSelectedPage">List</span>
               </a>
+              <a
+                class="navbar-item"
+                :class="{ 'is-active': selected === 'Particles' }"
+              >
+                <span @click="refreshSelectedPage">Particles</span>
+              </a>
             </div>
           </div>
         </div>
@@ -58,6 +64,7 @@
       <Home v-if="selected === 'Home'"></Home>
       <Request v-else-if="selected === 'Request'"></Request>
       <List v-else-if="selected === 'List'"></List>
+      <Particles v-else-if="selected === 'Particles'"></Particles>
     </div>
   </section>
 </template>
@@ -66,9 +73,10 @@
 import Home from "./Home.vue";
 import Request from "./Request.vue";
 import List from "./List.vue";
+import Particles from "./Particles.vue";
 
 export default {
-  components: { Home, Request, List },
+  components: { Home, Request, List, Particles },
   data() {
     return {
       selected: "Home",
@@ -158,7 +166,7 @@ div.control {
 
 .index-background {
   background-image: linear-gradient(
-      rgba(197, 201, 206, 0.685),
+      rgba(152, 154, 155, 0.685),
       rgba(163, 173, 182, 0.795)
     ),
     url("../images/image.jpg");

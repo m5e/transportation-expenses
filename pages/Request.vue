@@ -39,7 +39,7 @@
           :class="{ 'is-danger': !relayPoint.match(/\S/g) }"
           v-model="relayPoint"
         />
-        <span v-if="relayPoint === ''" :style="{ color: 'red' }">中継地点を入力して下さい</span>
+        <span v-if="!relayPoint.match(/S/g)" :style="{ color: 'red' }">中継地点を入力して下さい</span>
       </div>
       <label class="label">到着地点</label>
       <textarea
@@ -139,15 +139,19 @@ export default {
       this.isDisplayRelayPoint = !this.isDisplayRelayPoint;
     },
 
+    checkInputItem(item) {
+      return !item.match(/S/g);
+    },
+
     onClickApplyButton() {
       this.isModalActive = false;
 
       if (
-        !this.content.match(/\S/g) ||
-        !this.requestDate.match(/\S/g) ||
-        !this.startPoint.match(/\S/g) ||
-        (this.isDisplayRelayPoint && !this.relayPoint.match(/S/g)) ||
-        !this.goalPoint.match(/S/g) ||
+        this.checkInputItem(this.content) ||
+        this.checkInputItem(this.requestDate) ||
+        this.checkInputItem(this.startPoint) ||
+        (this.isDisplayRelayPoint && this.checkInputItem(this.relayPoint)) ||
+        this.checkInputItem(this.goalPoint) ||
         this.price <= 0
       ) {
         this.$toast.error("未入力の項目があります").goAway(1300);
